@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.invokehumantool/invoke-human",
+  "title": "Invoke Human Tool",
+  "description": "Ask a person on an Apple device or in a browser, then read their answer.",
+  "version": "1.0.0",
+  "websiteUrl": "https://invokehumantool.com",
+  "icons": [
+    {
+      "src": "https://invokehumantool.com/brand/invoke-human-ping.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ],
+      "theme": "light"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/abhirupghosh/invoke-human-plugins",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://invokehumantool.com/mcp"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "invoke-human",
+  "version": "1.0.0",
+  "description": "Ask a person on their Apple device, or in a browser, and get the answer back.",
+  "publisher": "Abhirup Ghosh",
+  "license": "MIT",
+  "homepage": "https://invokehumantool.com",
+  "supportURL": "https://invokehumantool.com/support",
+  "privacy": "https://invokehumantool.com/privacy",
+  "terms": "https://invokehumantool.com/terms",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "invoke-human": {
+      "url": "https://invokehumantool.com/mcp",
+      "type": "http",
+      "oauth": {
+        "enabled": true,
+        "scopes": ["handoffs"]
+      }
+    }
+  }
+}

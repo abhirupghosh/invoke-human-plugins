@@ -1,0 +1,21 @@
+{
+  "publisher": "Abhirup Ghosh",
+  "license": "MIT",
+  "supportURL": "https://invokehumantool.com/support",
+  "privacy": "https://invokehumantool.com/privacy",
+  "terms": "https://invokehumantool.com/terms",
+  "note": "Grok Bot does not publish a plugin manifest. This file is the remote connector to add in chat. The listing name is Abhirup Ghosh.",
+  "addMcpServer": {
+    "name": "Invoke Human",
+    "url": "https://invokehumantool.com/mcp"
+  },
+  "headers": null,
+  "auth": {
+    "type": "oauth",
+    "grant": "authorization_code",
+    "pkce": "S256",
+    "registration": "dynamic",
+    "scope": "handoffs",
+    "issuer": "https://invokehumantool.com"
+  }
+}

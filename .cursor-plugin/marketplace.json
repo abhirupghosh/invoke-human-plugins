@@ -1,0 +1,18 @@
+{
+  "name": "invoke-human",
+  "owner": {
+    "name": "Abhirup Ghosh"
+  },
+  "metadata": {
+    "description": "Ask a person on their Apple device, or in a browser, and get the answer back."
+  },
+  "plugins": [
+    {
+      "name": "invoke-human",
+      "source": "plugins/cursor",
+      "description": "Ask a person on their Apple device, or in a browser, and get the answer back.",
+      "homepage": "https://invokehumantool.com",
+      "keywords": ["mcp", "handoff", "human", "approval", "worksheet"]
+    }
+  ]
+}

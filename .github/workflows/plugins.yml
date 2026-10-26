@@ -1,0 +1,37 @@
+name: plugins
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Skill copies match the source
+        run: |
+          for d in plugins/chatgpt plugins/claude-code plugins/codex plugins/cursor plugins/gemini-cli; do
+            diff -r skills/invoke-human "$d/skills/invoke-human"
+          done
+      - name: Validate the MCPB manifest
+        run: npx --yes @anthropic-ai/mcpb@2.1.2 validate plugins/claude-desktop/manifest.json
+      - name: Validate the ChatGPT plugin manifest
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/plugin.schema.json" https://agent-plugins.org/schemas/1.0.0/plugin.schema.json
+          npx --yes ajv-cli@5 validate -s "$RUNNER_TEMP/plugin.schema.json" -d plugins/chatgpt/plugin.json --spec=draft2020
+      - name: Validate server.json against the MCP Registry schema
+        run: |
+          cd "$RUNNER_TEMP" && npm init -y >/dev/null && npm i --silent ajv ajv-formats
+          cd "$GITHUB_WORKSPACE"
+          SCHEMA_URL="$(node -p "require('./server.json')['\$schema']")"
+          curl -fsSL -o "$RUNNER_TEMP/server.schema.json" "$SCHEMA_URL"
+          NODE_PATH="$RUNNER_TEMP/node_modules" node -e "
+            const Ajv = require('ajv'); const formats = require('ajv-formats');
+            const ajv = new Ajv({ strict: false, allErrors: true }); formats(ajv);
+            const validate = ajv.compile(require(process.env.RUNNER_TEMP + '/server.schema.json'));
+            if (!validate(require('./server.json'))) { console.error(validate.errors); process.exit(1); }
+            console.log('server.json is valid');"

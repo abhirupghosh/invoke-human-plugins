@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.pem
+key.pem
+.mcpregistry_*
+mcp-registry-auth
+.env
+.env.*
+agent-tools/

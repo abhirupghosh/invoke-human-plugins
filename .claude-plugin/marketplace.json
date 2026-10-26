@@ -1,0 +1,19 @@
+{
+  "name": "invoke-human",
+  "description": "Ask a person on their Apple device, or in a browser, and get the answer back.",
+  "owner": {
+    "name": "Abhirup Ghosh",
+    "url": "https://invokehumantool.com"
+  },
+  "plugins": [
+    {
+      "name": "invoke-human",
+      "source": "./plugins/claude-code",
+      "description": "Ask a person on their Apple device, or in a browser, and get the answer back.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Abhirup Ghosh"
+      }
+    }
+  ]
+}

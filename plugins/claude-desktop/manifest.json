@@ -1,0 +1,63 @@
+{
+  "manifest_version": "0.4",
+  "name": "invoke-human",
+  "display_name": "Invoke Human",
+  "version": "1.0.0",
+  "description": "Ask a person and get the answer back. Desktop bundle for an agent key.",
+  "long_description": "Invoke Human sends a question to the signed-in person's Apple devices, or to a browser, and returns the answer. Connect Claude to https://invokehumantool.com/mcp when you want OAuth. This bundle is a local stdio proxy for an agent key you already have. The directory listing uses the remote URL, not this file. MCPB manifest 0.4 still requires a local process. A remote URL is not a manifest field.",
+  "author": {
+    "name": "Abhirup Ghosh",
+    "url": "https://invokehumantool.com"
+  },
+  "license": "MIT",
+  "homepage": "https://invokehumantool.com",
+  "documentation": "https://invokehumantool.com",
+  "support": "https://invokehumantool.com/support",
+  "privacy_policies": ["https://invokehumantool.com/privacy"],
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhirupghosh/invoke-human-plugins"
+  },
+  "keywords": ["handoff", "human", "approval", "worksheet"],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"],
+      "env": {
+        "HANDOFFS_TOKEN": "${user_config.handoffs_token}",
+        "INVOKE_HUMAN_MCP_URL": "https://invokehumantool.com/mcp"
+      }
+    }
+  },
+  "tools": [
+    { "name": "send_handoff", "description": "Send a worksheet, form, approval, review, or sketch." },
+    { "name": "send_html_handoff", "description": "Send a form the person taps or types." },
+    { "name": "send_ui_handoff", "description": "Send a HUI 0.1 form." },
+    { "name": "validate_ui", "description": "Check a HUI document without sending it." },
+    { "name": "share_handoff", "description": "Invite more people to a handoff." },
+    { "name": "delegate_handoff", "description": "Forward a handoff you can reassign." },
+    { "name": "get_handoff_status", "description": "Read one handoff's status." },
+    { "name": "get_handoff_result", "description": "Read the completed answer." },
+    { "name": "wait_for_handoff", "description": "Wait until the handoff is submitted." }
+  ],
+  "tools_generated": false,
+  "compatibility": {
+    "claude_desktop": ">=1.0.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "user_config": {
+    "handoffs_token": {
+      "type": "string",
+      "title": "Agent key",
+      "description": "Optional agent key (wk_...). Leave this blank and connect https://invokehumantool.com/mcp as a custom connector when you want OAuth instead of this bundle.",
+      "sensitive": true,
+      "required": false
+    }
+  }
+}

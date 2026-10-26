@@ -1,0 +1,19 @@
+{
+  "name": "invoke-human",
+  "displayName": "Invoke Human",
+  "version": "1.0.0",
+  "description": "Ask a person on their Apple device, or in a browser, and get the answer back.",
+  "author": {
+    "name": "Abhirup Ghosh",
+    "url": "https://invokehumantool.com"
+  },
+  "license": "MIT",
+  "homepage": "https://invokehumantool.com",
+  "repository": "https://github.com/abhirupghosh/invoke-human-plugins",
+  "supportURL": "https://invokehumantool.com/support",
+  "privacyPolicyUrl": "https://invokehumantool.com/privacy",
+  "termsOfServiceUrl": "https://invokehumantool.com/terms",
+  "icon": ".claude-plugin/icon.png",
+  "keywords": ["mcp", "handoff", "human", "approval", "worksheet"],
+  "mcpServers": "./.mcp.json"
+}

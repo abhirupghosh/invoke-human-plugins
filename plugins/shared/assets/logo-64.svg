@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="64" height="64">
+  <title>Invoke Human Tool</title>
+  <rect width="1024" height="1024" fill="#FBF8F2"/>
+  <g stroke="#161616" stroke-width="12" stroke-linecap="round">
+    <line x1="512" y1="268" x2="512" y2="378"/>
+    <line x1="370" y1="360" x2="450" y2="416"/>
+    <line x1="654" y1="360" x2="574" y2="416"/>
+  </g>
+  <g fill="#161616">
+    <rect x="491" y="212" width="42" height="42" rx="6"/>
+    <rect x="315" y="318" width="42" height="42" rx="6"/>
+    <rect x="667" y="318" width="42" height="42" rx="6"/>
+  </g>
+  <circle cx="512" cy="452" r="58" fill="#FF7A6E"/>
+  <line x1="512" y1="546" x2="512" y2="800" stroke="#161616" stroke-width="32" stroke-linecap="round"/>
+</svg>

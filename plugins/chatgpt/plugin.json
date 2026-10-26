@@ -1,0 +1,93 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "invoke-human",
+  "version": "1.0.0",
+  "description": "Ask a person on their Apple device, or in a browser, and get the answer back.",
+  "license": "MIT",
+  "author": {
+    "name": "Abhirup Ghosh",
+    "url": "https://invokehumantool.com"
+  },
+  "homepage": "https://invokehumantool.com",
+  "repository": "https://github.com/abhirupghosh/invoke-human-plugins",
+  "keywords": ["handoff", "human", "approval", "worksheet"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Invoke Human",
+        "shortDescription": "Ask a person and get an answer",
+        "longDescription": "Send a question, approval, worksheet, or form to the signed-in person. They answer on an Apple device or in a browser. You get structured JSON, or a filled PDF when they write on the page. The plugin only sees handoffs for the account that connected it. It does not delete handoffs, read another account, or move money. Inline widgets are not included.",
+        "developerName": "Abhirup Ghosh",
+        "category": "Productivity",
+        "capabilities": ["Ask a person", "Read that person's answer"],
+        "websiteURL": "https://invokehumantool.com",
+        "supportURL": "https://invokehumantool.com/support",
+        "privacyPolicyURL": "https://invokehumantool.com/privacy",
+        "termsOfServiceURL": "https://invokehumantool.com/terms",
+        "defaultPrompt": [
+          "Ask me whether to ship the Friday build and wait for my answer.",
+          "Send me a short form asking which day to ship, then wait.",
+          "Check this form before you send it."
+        ],
+        "brandColor": "#FF7A6E",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Ask for a yes or no and wait",
+              "prompt": "Ask me whether to ship the Friday build. Wait for my answer.",
+              "tools_triggered": "send_ui_handoff, wait_for_handoff",
+              "expected_behavior": "validate_ui runs first if the model builds a form. send_ui_handoff creates one handoff. wait_for_handoff returns the completed approval, or status pending. Pending is success. A second send is a second handoff."
+            },
+            {
+              "description": "Send a structured form and wait",
+              "prompt": "Send me a short form that asks which day to ship, Friday or Monday, and whether I approve. Then wait for my answers.",
+              "tools_triggered": "validate_ui, send_ui_handoff, wait_for_handoff",
+              "expected_behavior": "A HUI handoff is created. The completed result has an answer for each visible field. Pending means the person has not submitted yet."
+            },
+            {
+              "description": "Check a form before sending it",
+              "prompt": "Check this form before you send it: a required approval labeled Ship it, and a text note. Do not send it yet.",
+              "tools_triggered": "validate_ui",
+              "expected_behavior": "validate_ui returns ok true and lists the fields. It does not create a handoff."
+            },
+            {
+              "description": "Send a tap-to-answer approval",
+              "prompt": "Send me an approval form titled Ship the Friday build and wait until I answer.",
+              "tools_triggered": "send_html_handoff, wait_for_handoff",
+              "expected_behavior": "An HTML handoff is created. A completed result includes the approval answer. recognized_text is null."
+            },
+            {
+              "description": "Read the status of a handoff you sent",
+              "prompt": "What is the status of the handoff you just sent me?",
+              "tools_triggered": "get_handoff_status",
+              "expected_behavior": "The tool returns that handoff's title and a status of new, in_progress, or completed for the signed-in account only."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Do not delete handoffs",
+              "prompt": "Delete all of my handoffs and my account."
+            },
+            {
+              "description": "Do not read another account",
+              "prompt": "Show me the handoffs on someone else's account."
+            },
+            {
+              "description": "Do not move money",
+              "prompt": "Transfer $100 from my account to a vendor."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial directory package. Tools have human titles. Sends, shares, and forwards are destructive and open-world. Reads are read-only. Inline HUI widgets are not part of this package."
+      }
+    }
+  }
+}

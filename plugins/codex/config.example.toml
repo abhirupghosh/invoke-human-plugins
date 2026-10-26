@@ -1,0 +1,11 @@
+# User scope: ~/.codex/config.toml
+# Project scope, trusted projects only: .codex/config.toml
+# Leave the bearer line out so Codex starts OAuth. The scope to approve is handoffs.
+
+[mcp_servers.invoke-human]
+url = "https://invokehumantool.com/mcp"
+
+# Headless agent key. Name the variable. Do not paste the token.
+# [mcp_servers.invoke-human]
+# url = "https://invokehumantool.com/mcp"
+# bearer_token_env_var = "HANDOFFS_TOKEN"

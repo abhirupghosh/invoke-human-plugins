@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "invoke-human": {
+      "type": "http",
+      "url": "https://invokehumantool.com/mcp"
+    }
+  }
+}

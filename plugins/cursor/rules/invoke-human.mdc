@@ -1,0 +1,8 @@
+---
+description: Ask a person through Invoke Human when a decision, approval, worksheet, sketch, or form needs them
+alwaysApply: false
+---
+
+When the outcome depends on something only this person knows or should own, use the invoke-human skill and the Invoke Human MCP server. The server is `https://invokehumantool.com/mcp`.
+
+Decide yourself when the task already answers it. One handoff is one ask. `wait_for_handoff` returns the answer. A pending result is success.

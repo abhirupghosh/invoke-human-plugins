@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "invoke-human": {
+      "type": "streamable-http",
+      "url": "https://invokehumantool.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            },
+            "registrationUrl": "https://invokehumantool.com/register",
+            "authorizationUrl": "https://invokehumantool.com/authorize",
+            "tokenUrl": "https://invokehumantool.com/token",
+            "baseScopes": ["handoffs"]
+          }
+        }
+      }
+    }
+  }
+}

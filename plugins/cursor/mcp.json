@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "invoke-human": {
+      "url": "https://invokehumantool.com/mcp"
+    }
+  }
+}
